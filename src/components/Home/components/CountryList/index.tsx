@@ -1,58 +1,70 @@
 import React, { memo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import clsx from "clsx";
 
 import CountriesStore from "../../../../store/countries";
 import useTheme from "../../../../hooks/useTheme";
 
+import { Loader } from "../../../Loader";
+
 import style from "./style.module.scss";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 const LIMIT = 8;
 
 const CountryList = observer(() => {
-  let data = CountriesStore.countries;
-  // const newdata = data.slice(0, LIMIT);
-  const [postData, setPostData] = useState([...data.slice(0, LIMIT)]);
+  const [countries, setCountries] = useState([] as object[]);
+  const [paginatedCountries, setPaginatedCountries] = useState([] as object[]);
   const [visible, setVisible] = useState(LIMIT);
   const [hasMore, setHasMore] = useState(true);
+  const { isDark } = useTheme();
 
-  const fetchData = () => {
+  useEffect(() => {
+    setCountries(CountriesStore.countries);
+    setPaginatedCountries(CountriesStore.countries.slice(0, LIMIT));
+    setHasMore(true);
+    setVisible(LIMIT);
+
+    if (CountriesStore.countries.length === 0) {
+      CountriesStore.getAllCountries();
+    }
+    // eslint-disable-next-line
+  }, [CountriesStore.countries.length]);
+
+  const getMoreCountries = () => {
     const newLimit = visible + LIMIT;
-    const dataToAdd = data.slice(visible, newLimit);
+    const countriesToAdd = countries.slice(visible, newLimit);
 
-    if (data.length > postData.length) {
+    if (countries.length > paginatedCountries.length) {
       setTimeout(() => {
-        setPostData((prev) => [...prev, ...dataToAdd]);
+        setPaginatedCountries((prev) => [...prev, ...countriesToAdd]);
       }, 2000);
       setVisible(newLimit);
     } else {
       setHasMore(false);
     }
   };
-  const { isDark } = useTheme();
-  useEffect(() => {
-    if (CountriesStore.countries.length === 0) {
-      CountriesStore.getAllCountries();
-    }
-  }, []);
-  console.log(postData);
+
   return (
-    <ul className={style.countryListWrapper}>
+    <div className={style.countryListWrapper}>
       <InfiniteScroll
-        dataLength={postData.length} //This is important field to render the next data
-        next={fetchData}
+        dataLength={paginatedCountries.length}
+        next={getMoreCountries}
         hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
+        loader={
+          <div className={style.loaderPosition}>
+            <Loader />
+          </div>
+        }
         endMessage={
-          <p style={{ textAlign: "center" }}>
-            <b>Yay! You have seen it all</b>
-          </p>
+          <div className={style.endMessage}>
+            <p>Yay! You have seen it all</p>
+          </div>
         }>
-        {postData.map((country: any) => (
-          <li
+        {paginatedCountries.map((country: any) => (
+          <div
             key={Math.random()}
             className={clsx(style.countryListItem, isDark && style.dark)}>
             <Link
@@ -73,10 +85,10 @@ const CountryList = observer(() => {
                 </p>
               </div>
             </Link>
-          </li>
+          </div>
         ))}
       </InfiniteScroll>
-    </ul>
+    </div>
   );
 });
 
