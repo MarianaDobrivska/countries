@@ -1,5 +1,5 @@
-@import "../../../../../style_utils/vars.scss";
-@import "../../../../../style_utils/mixins.scss";
+@import "../../../../style_utils/mixins.scss";
+@import "../../../../style_utils/vars.scss";
 
 .borderCountriesWrapper {
   @include min-desktop {
