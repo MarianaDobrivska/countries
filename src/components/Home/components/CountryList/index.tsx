@@ -14,7 +14,7 @@ const LIMIT = 8;
 
 const CountryList = observer(() => {
   let data = CountriesStore.countries;
-  const newdata = data.slice(0, LIMIT);
+  // const newdata = data.slice(0, LIMIT);
   const [postData, setPostData] = useState([...data.slice(0, LIMIT)]);
   const [visible, setVisible] = useState(LIMIT);
   const [hasMore, setHasMore] = useState(true);
