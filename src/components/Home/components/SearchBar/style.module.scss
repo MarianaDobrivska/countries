@@ -1,0 +1,72 @@
+@import "../../../../style_utils/vars.scss";
+@import "../../../../style_utils/mixins.scss";
+
+.searchBarWrapper {
+  display: flex;
+  background-color: var(--light-mode-elements-color);
+  box-shadow: rgba(0, 0, 0, 0.139) 0px 3px 12px;
+  border-radius: 5px;
+  min-width: 50%;
+
+  @include max-mobile {
+    margin-top: 15px;
+    margin-bottom: 45px;
+  }
+
+  & button {
+    height: 45px;
+    width: 70px;
+    @include tablet {
+      height: 55px;
+      width: 100px;
+    }
+
+    &:hover > .searchBarImage {
+      scale: 1.4;
+    }
+  }
+
+  & input {
+    padding: 10px;
+    width: 100%;
+    background-color: var(--light-mode-elements-color);
+    font-size: 16px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+
+    &::placeholder {
+      opacity: 0.6;
+      font-size: 16px;
+    }
+  }
+}
+
+.searchBarImage {
+  width: 15px;
+  height: 15px;
+  opacity: 0.6;
+  color: var(--light-mode-input-color);
+  transition: all 250ms ease-in-out;
+
+  @include tablet {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.darkWrapper {
+  background-color: var(--dark-mode-elements-color);
+
+  & button {
+    & svg {
+      color: var(--dark-mode-text-color);
+    }
+  }
+
+  & input {
+    background-color: var(--dark-mode-elements-color);
+    &::placeholder {
+      color: var(--dark-mode-text-color);
+    }
+  }
+}

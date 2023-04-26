@@ -1,0 +1,40 @@
+@import "../../../../style_utils/vars.scss";
+@import "../../../../style_utils/mixins.scss";
+
+.backButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 8px 25px;
+  margin-bottom: 40px;
+  gap: 10px;
+
+  font-size: 12px;
+  box-shadow: var(--primary-box-shadow);
+  border-radius: 4px;
+  transition: all 250ms ease-in-out;
+
+  @include tablet {
+    margin-bottom: 55px;
+    font-size: 14px;
+    padding: 12px 35px;
+  }
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    & svg {
+      scale: 1.3;
+    }
+  }
+
+  & svg {
+    stroke-width: 0.5px;
+    transition: all 250ms ease-in-out;
+  }
+}
+
+.darkButton {
+  background-color: var(--dark-mode-elements-color);
+  color: var(--dark-mode-text-color);
+}
