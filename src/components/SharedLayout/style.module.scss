@@ -1,0 +1,17 @@
+@import "../../style_utils/mixins.scss";
+@import "../../style_utils/vars.scss";
+
+.appWrapper {
+  padding: 90px 20px;
+  background-color: var(--light-mode-background-color);
+  color: var(--light-mode-text-color);
+
+  @include tablet {
+    padding: 100px 50px;
+  }
+}
+
+.dark {
+  background-color: var(--dark-mode-background-color);
+  color: var(--dark-mode-text-color);
+}

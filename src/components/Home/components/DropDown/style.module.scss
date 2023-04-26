@@ -1,0 +1,48 @@
+@import "../../../../style_utils/mixins.scss";
+@import "../../../../style_utils/vars.scss";
+
+.dropDownWrapper {
+  width: 200px;
+}
+
+div .select {
+  outline: none;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.139) 0px 3px 12px;
+  height: 45px;
+  width: 200px;
+  background-color: var(--light-mode-elements-color);
+
+  @include tablet {
+    height: 55px;
+  }
+}
+
+div .darkSelect {
+  background-color: var(--dark-mode-elements-color);
+}
+
+div .select div div {
+  color: var(--light-mode-text-color);
+}
+
+div .darkSelect div div {
+  color: var(--dark-mode-text-color);
+}
+
+div .selectOption {
+  background-color: rgba(85, 81, 81, 0.464);
+}
+div .focusedOption {
+  background-color: rgba(85, 81, 81, 0.464);
+}
+
+div .select + div {
+  background-color: var(--light-mode-elements-color);
+  color: var(--light-mode-text-color);
+}
+
+div .darkSelect + div {
+  background-color: var(--dark-mode-elements-color);
+  color: var(--dark-mode-text-color);
+}

@@ -1,0 +1,12 @@
+@import "../../style_utils/mixins.scss";
+
+.sectionWrapper {
+  padding: 25px 0;
+  @include tablet {
+    padding: 50px 0;
+  }
+
+  @include min-desktop {
+    height: 100%;
+  }
+}

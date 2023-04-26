@@ -1,0 +1,54 @@
+@import "../../../style_utils/mixins.scss";
+@import "../../../style_utils/vars.scss";
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 90px;
+  width: 100%;
+  z-index: 1;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: 800;
+  color: var(--light-mode-text-color);
+  padding: 10px 20px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 4px;
+
+  background-color: var(--light-mode-elements-color);
+
+  @include tablet {
+    height: 100px;
+    padding: 10px 50px;
+  }
+
+  & h1 {
+    font-size: 20px;
+    @include tablet {
+      font-size: 30px;
+    }
+  }
+
+  & button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 7px;
+    color: inherit;
+
+    font-size: 14px;
+    font-weight: 600;
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+}
+
+.dark {
+  color: var(--dark-mode-text-color);
+  background-color: var(--dark-mode-elements-color);
+}

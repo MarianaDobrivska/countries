@@ -1,0 +1,10 @@
+@import "../../style_utils/mixins.scss";
+
+.searchWrapper {
+  @include tablet {
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

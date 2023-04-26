@@ -1,0 +1,77 @@
+@import "../../../../style_utils/mixins.scss";
+@import "../../../../style_utils/vars.scss";
+
+.countryListWrapper {
+  margin: 30px 0 60px 0;
+}
+
+.countryListWrapper div div {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  @include tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.countryListItem {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  box-shadow: var(--primary-box-shadow);
+  transition: all 250ms ease-in-out;
+  background-color: var(--light-mode-elements-color);
+  max-width: 300px;
+
+  &:hover {
+    scale: 1.02;
+  }
+
+  & img {
+    width: 300px;
+    height: 200px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+  }
+}
+
+.countryListItem .countryContentWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 60px 20px 40px 20px;
+  font-size: 14px;
+
+  & h2 {
+    padding: 0 20px;
+    position: absolute;
+    top: 19px;
+
+    left: 0;
+    right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &::after {
+      content: "...";
+      visibility: hidden;
+    }
+  }
+
+  & p > span {
+    font-weight: 600;
+  }
+}
+
+.linkWrapper {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dark {
+  background-color: var(--dark-mode-elements-color);
+}

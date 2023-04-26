@@ -1,0 +1,57 @@
+@import "../../../../../style_utils/vars.scss";
+@import "../../../../../style_utils/mixins.scss";
+
+.borderCountriesWrapper {
+  @include min-desktop {
+    margin-top: 50px;
+    display: flex;
+    gap: 10px;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+
+    @include min-desktop {
+      margin-top: 0;
+    }
+
+    &__listItem {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 5px;
+
+      width: 105px;
+
+      background-color: var(--light-mode-elements-color);
+      box-shadow: var(--primary-box-shadow);
+      border: 1px solid rgba(158, 154, 154, 0.243);
+      transition: all 250ms linear;
+
+      &:hover {
+        scale: 1.03;
+        border: 1px solid rgba(158, 154, 154, 0.366);
+      }
+
+      & a {
+        text-decoration: none;
+        color: inherit;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.darkItem {
+  background-color: var(--dark-mode-elements-color);
+}
