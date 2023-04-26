@@ -9,7 +9,6 @@ const LS_KEY = "all-countries";
 
 class Store {
   countries = JSON.parse(localStorage.getItem(LS_KEY) as string) ?? [];
-  paginatedCountries = [] as object[];
   selectedCountry = null;
 
   constructor() {
@@ -31,10 +30,6 @@ class Store {
     const country = await fetchCountriesByName(name);
     this.selectedCountry = country[0];
     this.countries = [country[0]];
-  }
-
-  getPaginatedCountries(countries: object[]) {
-    this.paginatedCountries = countries;
   }
 }
 

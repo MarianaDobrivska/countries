@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import clsx from "clsx";
 
-import useTheme from "../../../../../hooks/useTheme";
+import useTheme from "../../../../hooks/useTheme";
 
 import style from "./style.module.scss";
 

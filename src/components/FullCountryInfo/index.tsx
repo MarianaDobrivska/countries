@@ -1,16 +1,23 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
+
+import clsx from "clsx";
 
 import CountriesStore from "../../store/countries";
+import useTheme from "../../hooks/useTheme";
 
-import { BackButton } from "./components/BackButton";
-import { CountryMeta } from "./components/CountryMeta";
+import { CountryMeta } from "./CountryMeta";
+import { Loader } from "../Loader";
 
 import style from "./style.module.scss";
 
 export const FullCountryInfo = observer(() => {
   const { name } = useParams();
+  const navigate = useNavigate();
+  const { isDark } = useTheme();
   const country = CountriesStore.selectedCountry;
 
   useEffect(() => {
@@ -19,11 +26,23 @@ export const FullCountryInfo = observer(() => {
     }
   }, [name]);
 
-  if (!country) return <div>...Loading</div>;
+  const handleBackButtonClick = () => navigate(-1);
+
+  if (!country)
+    return (
+      <div className={style.loaderWrapper}>
+        <Loader />
+      </div>
+    );
 
   return (
     <section className={style.sectionWrapper}>
-      <BackButton />
+      <button
+        className={clsx(style.backButton, isDark && style.darkButton)}
+        onClick={handleBackButtonClick}>
+        <BsArrowLeft />
+        Back
+      </button>
       <CountryMeta country={country} />
     </section>
   );

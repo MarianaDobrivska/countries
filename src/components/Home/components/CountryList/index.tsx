@@ -49,45 +49,74 @@ const CountryList = observer(() => {
 
   return (
     <div className={style.countryListWrapper}>
-      <InfiniteScroll
-        dataLength={paginatedCountries.length}
-        next={getMoreCountries}
-        hasMore={hasMore}
-        loader={
-          <div className={style.loaderPosition}>
-            <Loader />
-          </div>
-        }
-        endMessage={
-          <div className={style.endMessage}>
-            <p>Yay! You have seen it all</p>
-          </div>
-        }>
-        {paginatedCountries.map((country: any) => (
-          <div
-            key={Math.random()}
-            className={clsx(style.countryListItem, isDark && style.dark)}>
-            <Link
-              to={`/country/${country.name.common}`}
-              className={style.linkWrapper}>
-              <img src={country.flags.png} alt={country.flags.alt} />
-              <div className={style.countryContentWrapper}>
-                <h2>{country.name.official}</h2>
-                <p>
-                  <span>Population:</span>{" "}
-                  {country.population.toLocaleString("en-US")}
-                </p>
-                <p>
-                  <span>Region:</span> {country.region}
-                </p>
-                <p>
-                  <span>Capital:</span> {country.capital}
-                </p>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </InfiniteScroll>
+      {countries.length > 8 ? (
+        <InfiniteScroll
+          dataLength={paginatedCountries.length}
+          next={getMoreCountries}
+          hasMore={hasMore}
+          loader={
+            <div className={style.loaderPosition}>
+              <Loader />
+            </div>
+          }
+          endMessage={
+            <div className={style.endMessage}>
+              <p>Yay! You have seen it all</p>
+            </div>
+          }>
+          {paginatedCountries.map((country: any) => (
+            <div
+              key={Math.random()}
+              className={clsx(style.countryListItem, isDark && style.dark)}>
+              <Link
+                to={`/country/${country.name.common}`}
+                className={style.linkWrapper}>
+                <img src={country.flags.png} alt={country.flags.alt} />
+                <div className={style.countryContentWrapper}>
+                  <h2>{country.name.official}</h2>
+                  <p>
+                    <span>Population:</span>{" "}
+                    {country.population.toLocaleString("en-US")}
+                  </p>
+                  <p>
+                    <span>Region:</span> {country.region}
+                  </p>
+                  <p>
+                    <span>Capital:</span> {country.capital}
+                  </p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </InfiniteScroll>
+      ) : (
+        <>
+          {countries.map((country: any) => (
+            <div
+              key={Math.random()}
+              className={clsx(style.countryListItem, isDark && style.dark)}>
+              <Link
+                to={`/country/${country.name.common}`}
+                className={style.linkWrapper}>
+                <img src={country.flags.png} alt={country.flags.alt} />
+                <div className={style.countryContentWrapper}>
+                  <h2>{country.name.official}</h2>
+                  <p>
+                    <span>Population:</span>{" "}
+                    {country.population.toLocaleString("en-US")}
+                  </p>
+                  <p>
+                    <span>Region:</span> {country.region}
+                  </p>
+                  <p>
+                    <span>Capital:</span> {country.capital}
+                  </p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 });
