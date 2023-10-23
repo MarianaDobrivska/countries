@@ -26,7 +26,10 @@ export const FullCountryInfo = observer(() => {
     }
   }, [name]);
 
-  const handleBackButtonClick = () => navigate(-1);
+  const handleBackButtonClick = () => {
+    navigate(-1);
+    CountriesStore.getAllCountries();
+  };
 
   if (!country)
     return (

@@ -4,8 +4,25 @@ html {
   font-family: "Nunito Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100vw;
-  height: 100vh;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(90, 85, 85);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #4b5b68;
+  border-radius: 10px;
+  border: 1px solid #58758d;
 }
 
 code {

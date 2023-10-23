@@ -27,11 +27,8 @@ const CountryList = observer(() => {
     setHasMore(true);
     setVisible(LIMIT);
 
-    if (CountriesStore.countries.length === 0) {
-      CountriesStore.getAllCountries();
-    }
-    // eslint-disable-next-line
-  }, [CountriesStore.countries.length]);
+    CountriesStore.getAllCountries();
+  }, []);
 
   const getMoreCountries = () => {
     const newLimit = visible + LIMIT;
@@ -51,6 +48,7 @@ const CountryList = observer(() => {
     <div className={style.countryListWrapper}>
       {countries.length > 8 ? (
         <InfiniteScroll
+          style={{ overflow: "hidden" }}
           dataLength={paginatedCountries.length}
           next={getMoreCountries}
           hasMore={hasMore}

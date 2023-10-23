@@ -6,6 +6,7 @@
 }
 
 div .select {
+  cursor: pointer;
   outline: none;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.139) 0px 3px 12px;
@@ -32,9 +33,11 @@ div .darkSelect div div {
 
 div .selectOption {
   background-color: rgba(85, 81, 81, 0.464);
+  cursor: pointer;
 }
 div .focusedOption {
   background-color: rgba(85, 81, 81, 0.464);
+  cursor: pointer;
 }
 
 div .select + div {

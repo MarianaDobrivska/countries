@@ -20,10 +20,7 @@ export const CountryMeta = ({ country }: any) => {
   const currenciesList = [...Object.values(currencies)]
     .map((el: any) => el.name)
     .join(", ");
-  const getNativeName = () => {
-    const langKey = Object.keys(languages);
-    return name.nativeName[langKey[0]].common;
-  };
+  const nativeName = name?.nativeName?.bar?.common ?? name?.common;
 
   return (
     <div className={style.countryMetaWrapper}>
@@ -34,7 +31,7 @@ export const CountryMeta = ({ country }: any) => {
           <ul>
             <li>
               <span>Native Name: </span>
-              {getNativeName()}
+              {nativeName}
             </li>
             <li>
               <span>Population: </span>
